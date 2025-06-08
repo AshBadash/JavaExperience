@@ -37,3 +37,5 @@
 > - <strong>Two: If you still have issues, you can go to your environment settings and change your path for JDK. VSCode doesn't like it when you include the bin directory in your path.</strong>
 > <br>
 > - <strong>So, go one level up, save your changes, and when VSCode goes to look for Java on your computer, it will be findable<br></strong>
+
+I added this in VI trough my MobaXterm WSL terminal. Hopefully it saves. Soon I will learn git terminal commands!
