@@ -30,10 +30,12 @@ public class main {
         String noun3 = scanner.nextLine();
 
 
-        System.out.println("One quiet day, a " + adj1 + " raccoon named " + noun1 + " crept into the local hotel to steal a jar of " + noun2 + ".");
+        //Add logic to make a-> some or a-> an
+
+        System.out.println("\nOne quiet day, a " + adj1 + " raccoon named " + noun1 + " crept into the local hotel to steal a jar of " + noun2 + ".");
         System.out.println("Armed with only a " + adj2 + " " + noun3 + " and a DREAM, it " + verb1 + " past the security gaurd, dodged a " + verb2 + " alarm,");
         System.out.println("and " + verb3 + " into the wilderness, with the goods securred!");
-        System.out.println("But just as it opened the jar... there was a " + adj3 + " mouse inside. OH NO!");
+        System.out.println("But just as it opened the jar... there was a " + adj3 + " mouse inside. OH NO!\n\n");
 
 
         scanner.close();
