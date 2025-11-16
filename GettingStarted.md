@@ -15,7 +15,9 @@
 
 - I followed [this guide](https://www.mcjty.eu/docs/1.20/) by McJty, who does a great service with Minecraft modding tutorials.<br>
 
-- I clicked on download Java 17 for Minecraft 1.20. Next, I went to VSCode (my preferred IDE), and installed some Java extensions.<br>
+- I clicked on download Java 17 MSI, as Java 17 is used for the newest builds of Minecraft, such as 1.20.1. Next, I went to VSCode (my preferred IDE), and installed the recommended Java development extention pack. Since I will be working with Gradle to actually run Minecraft when I playtest mods, I need VSCode to be able to communicate with it.<br>
+
+- Secondly, I also downloaded Gradle for forge (linked on the homepage for McJty's tutorial), ensuring to select the zip folder instead of the executable because I needed only to copy a select few files necesary to run Gradle and copy them into my project's directory.<br>
 
 <br>
 
@@ -33,6 +35,6 @@
 > If you do not have it installed, there won't be anything for it to use. To fix this, you can try re-installing your extensions.<br><br>
 
 > - Two: If you still have issues, you can go to your environment settings and change your path for JDK. VSCode doesn't like it when you include the bin directory in your path.<br><br>
-So, go one level up, save your changes, and when VSCode goes to look for Java on your computer, it will be findable<br><br></strong>
+So, go one level up, save your changes, and when VSCode goes to look for Java on your computer, it will be findable<br><br>
 
-I added this line in VI trough my MobaXterm WSL terminal. Hopefully it saves. Soon I will learn git terminal commands!
+> - Three: VSCode may need a higher version of Java (21+ to be specific) in order to communicate with Gradle, meaning that you may need two different versions of Java. Java 17 for your environment, but Java 21+ for VSCode's workspace JSON settings.</strong>
