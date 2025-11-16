@@ -75,6 +75,5 @@ public class Main {
         but cannot handle non-doubles passed in for num1 or num2*/
 
         scanner.close();
-
     }
 }
