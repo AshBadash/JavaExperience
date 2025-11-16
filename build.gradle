@@ -120,6 +120,10 @@ repositories {
     // flatDir {
     //     dir 'libs'
     // }
+
+    // maven { //JEI
+    //     url "https://maven.blamejared.com"
+    // }
 }
 
 dependencies {
