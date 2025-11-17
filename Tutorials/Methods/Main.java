@@ -3,7 +3,8 @@ import java.util.Scanner;
 //Together the return type, name, and parameters create a unique method signiture.
 
 /*Three places where variables can go: after Main, a class variable.
-After static void main, a local variable, or in any other method under main, also local to its method.*/
+After static void main, a local variable, or in any other method under main, also local to its method.
+*/
 
 public class Main {
 
