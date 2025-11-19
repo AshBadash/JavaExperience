@@ -1,6 +1,12 @@
 import java.util.Scanner;
+import java.math.BigDecimal;
 
-//Want to add commas to output + refactor with more helper functions.
+/*FUTURE ADDITIONS:
+
+Round to two decimal places instead of truncate.
+Accept scientific notation input
+Accept scientific notation output
+Output less than two decimal places if not required*/ 
 
 public class Main {
     public static void main(String[] args){
@@ -34,6 +40,7 @@ public class Main {
             num2 = toDouble(str2);
         }
         else{
+            scanner.close();
             return;
         }
 
@@ -52,14 +59,21 @@ public class Main {
             case '^' -> result = Math.pow(num1, num2); //Math is a default lib in Java
             default -> error = true; //something went wrong
             }
+
+            if(Double.toString(result).indexOf("E") > -1){
+                System.out.print("ERR. Too Large!\n");
+                scanner.close();
+                return;
+            }
         
+            //need a result with commas and two decimal places always.
             switch(operator){
-                case '+' -> System.out.printf(num1 + " plus " + num2 + " equals %.2f\n", result);
-                case '-' -> System.out.printf(num1 + " minus " + num2 + " equals %.2f\n", result);
-                case '*' -> System.out.printf(num1 + " times " + num2 + " equals %.2f\n", result);
-                case '/' -> System.out.printf(num1 + " divided by " + num2 + " equals %.2f\n", result);
-                case '\\' -> System.out.printf(num1 + " integer divided by " + num2 + " equals %.0f\n", result);
-                case '^' -> System.out.printf(num1 + " to the power of " + num2 + " equals %.2f\n", result);
+                case '+' -> System.out.printf(str1 + " plus " + str2 + " equals " + toStr(result) + '\n');
+                case '-' -> System.out.printf(str1 + " minus " + str2 + " equals " + toStr(result) + '\n');
+                case '*' -> System.out.printf(str1 + " times " + str2 + " equals " + toStr(result) + '\n');
+                case '/' -> System.out.printf(str1 + " divided by " + str2 + " equals " + toStr(result) + '\n');
+                case '\\' -> System.out.printf(str1 + " integer divided by " + str2 + " equals ", toStr(result) + '\n');
+                case '^' -> System.out.printf(str1 + " to the power of " + str2 + " equals " + toStr(result) + '\n');
             }
         }
 
@@ -104,7 +118,7 @@ public class Main {
             
             //Check if the character is a letter (invalid), and error out immediately.
             if(Character.isLetter(c)){
-                System.out.println("Invalid non-number selected!\n");
+                System.out.println("Invalid non-number selected! (letters)\n");
                 return false;
             }
 
@@ -123,7 +137,7 @@ public class Main {
                     }
                 }
                 if(isSpecial){
-                    System.out.println("Invalid non-number selected!\n");
+                    System.out.println("Invalid non-number selected! (special chars)\n");
                     return false;
                 }
             }
@@ -134,7 +148,7 @@ public class Main {
                     decimalCount += 1;
                 }
                 else{
-                    System.out.println("Invalid non-number selected!\n");
+                    System.out.println("Invalid non-number selected! (decimal count)\n");
                     return false;
                 }
             }
@@ -146,26 +160,30 @@ public class Main {
                 String lastThree = line.substring(line.length() - 3, line.length());
                 if(i == 0){ //i = -2, -3, -4 do not work in Java...
                     //How do I check if the last three chars are numbers... take substr from len - 4 to len -1, and examine!
-                    System.out.println("Invalid non-number selected!\n");
+                    System.out.println("Invalid non-number selected! (comma at end)\n");
                     return false;
                 }
                 for(int d = 0; d < 3; d++){
                     if(lastThree.charAt(d) == ','){
-                        System.out.println("Invalid non-number selected!\n");
+                        System.out.println("Invalid non-number selected! (comma at last three)\n");
                         return false;
                     }
                 }
 
                 //Comma spacing
-                int pos = i;
-                while(pos + 4 < line.length()){
-                    if(c == line.charAt(pos + 4)){ //Doesn't catch repeated commas!
-                        pos += 4;
+                int start = i;
+                int nextPos = start + 1;
+
+                while(nextPos < line.length()){
+
+                    if(line.charAt(nextPos) == c){
+                        if((nextPos - start) % 4 != 0){
+                            System.out.println("Invalid non-number selected! (comma spacing)\n");
+                            return false;
+                        }
                     }
-                    else{
-                        System.out.println("Invalid non-number selected!\n");
-                        return false;
-                    }
+
+                    nextPos++;
                 }
             }    
         }
@@ -185,15 +203,76 @@ public class Main {
         double dub = 0.0;
         int len = str.length();
 
-        for(int i = 0; i < len; i++){
+        int stop;
+        if(str.indexOf(".") > -1){
+            stop = str.indexOf(".");
+        }
+        else{
+            stop = len;
+        }
+
+        for(int i = 0; i < stop; i++){
             int digit = (str.charAt(i) - '0'); //negative sign should be handled before this point to avoid undefined behaviour
-            int power = len - i - 1;
+            int power = (stop - 1) - i;
+            dub += digit * Math.pow(10, power);
+            System.out.println("dub is currently: " + dub);
+        }
+
+        for(int i = stop + 1; i < len; i++){
+            int digit = (str.charAt(i) - '0');
+            System.out.println("decimal digit is: " + digit + '\n');
+            int power = -1 * (i - stop);
+            System.out.println("decimal power is: " + power + '\n');
             dub += digit * Math.pow(10, power);
         }
 
         if(negative){
             dub *= -1;
         }
+        
+        System.out.println("String to double yields number for " + str + " of " + dub);
         return dub;
+    }
+
+    static String toStr(double result){
+        System.out.println("The input double to string is: " + result + '\n');
+
+        String answer = "";
+
+        if(result < 0.0){
+            answer += "-";
+            result *= -1;
+        }
+        
+        String digits = Double.toString(result);
+        //System.out.println(digits);
+        String commaPart = digits.substring(0, digits.indexOf("."));
+        String decimalPart = digits.substring(digits.indexOf("."));
+        
+
+        int len = commaPart.length();
+        int location;
+        for(int i = 0; i < commaPart.length(); i++){
+            answer += commaPart.charAt(i);
+            location = len - i - 1;
+            if(location != 0 && location % 3 == 0){
+                answer += ","; //commas should be determined by decrementing in reverse.
+            }
+
+            location += 1;
+        }
+
+        if(decimalPart.length() < 2){
+            decimalPart += "00";
+        }
+        else if(decimalPart.length() < 3){
+            decimalPart += "0";
+        }
+        else{
+            decimalPart = decimalPart.substring(0, 3);
+        }
+        answer += decimalPart;
+
+        return answer;
     }
 }
