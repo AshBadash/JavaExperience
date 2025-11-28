@@ -1,0 +1,13 @@
+{
+"item.examplemod.alexandrite": "Alexandrite Gem",
+"item.examplemod.raw_alexandrite": "Raw Alexandrite",
+
+"block.examplemod.alexandrite_block": "Alexnadrite Block",
+"block.examplemod.raw_alexandrite_block": "Block of Raw Alexandrite",
+
+"creativetab.examplemod.alexandrite_items": "Alexandrite Items",
+"creativetab.examplemod.alexandrite_blocks": "Alexandrite Blocks",
+
+"block.examplemod.alexandrite_ore": "Alexandrite Ore",
+"block.examplemod.alexandrite_deepslate_ore": "Alexandrite Deepslate Ore"
+}
