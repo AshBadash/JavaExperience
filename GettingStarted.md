@@ -27,7 +27,7 @@
 
 - My VSCode did not recognize that I had Java installed (evident due to the big fat error saying command "javac" not found).<br>
 
-- So I did some research into this issue for VSCOde on Windows and managed to fix it after some key discoveries:<br>
+- So I did some research into this issue for VSCode on Windows and managed to fix it after some key discoveries:<br>
 
 </em><br>
 
