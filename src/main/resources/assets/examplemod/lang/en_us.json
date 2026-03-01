@@ -9,5 +9,7 @@
 "creativetab.examplemod.alexandrite_blocks": "Alexandrite Blocks",
 
 "block.examplemod.alexandrite_ore": "Alexandrite Ore",
-"block.examplemod.alexandrite_deepslate_ore": "Alexandrite Deepslate Ore"
+"block.examplemod.alexandrite_deepslate_ore": "Alexandrite Deepslate Ore",
+
+"item.examplemod.chisel": "Chisel"
 }
