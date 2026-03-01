@@ -37,4 +37,7 @@
 > - Two: If you still have issues, you can go to your environment settings and change your path for JDK. VSCode doesn't like it when you include the bin directory in your path.<br><br>
 So, go one level up, save your changes, and when VSCode goes to look for Java on your computer, it will be findable.<br><br>
 
-> - Three: VSCode may need a higher version of Java (21+ to be specific) in order to communicate with Gradle, meaning that you may need two different versions of Java. Java 17 for your environment, but Java 21+ for VSCode's workspace JSON settings.</strong>
+> - Three: VSCode may need a higher version of Java (21+ to be specific) in order to communicate with Gradle, meaning that you may need two different versions of Java. Java 17 for your environment, but Java 21+ for VSCode's workspace JSON settings.</strong><br><br>
+
+I had to make a repo to document and save my work in the innevitable circumstance that I accidentally blew everything up, or in the less likely event a file got corrupted.
+I decided to make one whole repo for my minecraft mods, with resource and mod packs in seperate subdirectories, since knowing my level of CS expertise, they would all be extremeley lightweight.<br><br>
