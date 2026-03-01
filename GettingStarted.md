@@ -27,7 +27,7 @@
 
 - My VSCode did not recognize that I had Java installed (evident due to the big fat error saying command "javac" not found).<br>
 
-- So I did some research into this issue for VSCOde on Windows and managed to fix it after some key discoveries:<br>
+- So I did some research into this issue for VSCode on Windows and managed to fix it after some key discoveries:<br>
 
 </em><br>
 
@@ -35,6 +35,6 @@
 > If you do not have it installed, there won't be anything for it to use. To fix this, you can try re-installing your extensions.<br><br>
 
 > - Two: If you still have issues, you can go to your environment settings and change your path for JDK. VSCode doesn't like it when you include the bin directory in your path.<br><br>
-So, go one level up, save your changes, and when VSCode goes to look for Java on your computer, it will be findable<br><br>
+So, go one level up, save your changes, and when VSCode goes to look for Java on your computer, it will be findable.<br><br>
 
 > - Three: VSCode may need a higher version of Java (21+ to be specific) in order to communicate with Gradle, meaning that you may need two different versions of Java. Java 17 for your environment, but Java 21+ for VSCode's workspace JSON settings.</strong>
